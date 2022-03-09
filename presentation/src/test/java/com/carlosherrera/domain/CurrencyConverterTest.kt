@@ -25,11 +25,11 @@ class CurrencyConverterTest {
 
     @Before
     fun currencyConverterSetup(){
-        currencyConverter = CurrencyConverter().apply {
+        currencyConverter = CurrencyConverter()
+        currencyConverter.apply{
             setupRates(rates)
             currencyConverter.initRateConversion()
         }
-
     }
 
     @Test
