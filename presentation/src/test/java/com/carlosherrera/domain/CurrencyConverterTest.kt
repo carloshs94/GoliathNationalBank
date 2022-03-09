@@ -17,13 +17,7 @@ class CurrencyConverterTest {
         Rate("USD", "EUR", 0.736),
         Rate("EUR", "CAD", 1.366),
     )
-    private val transactions = listOf(
-        Transaction("T2006", BigDecimal(10), "USD"),
-        Transaction("M2007", BigDecimal(34.57), "CAD"),
-        Transaction("R2008", BigDecimal(17.95), "USD"),
-        Transaction("T2006", BigDecimal(7.63), "EUR"),
-        Transaction("B2009", BigDecimal(21.23), "USD"),
-    )
+
     private val exampleProductTransaction = listOf(
         Transaction("T2006", BigDecimal(10), "USD"),
         Transaction("T2006", BigDecimal(7.63), "EUR"),
@@ -31,9 +25,11 @@ class CurrencyConverterTest {
 
     @Before
     fun currencyConverterSetup(){
-        currencyConverter = CurrencyConverter()
-        currencyConverter.setupRates(rates)
-        currencyConverter.initRateConversion()
+        currencyConverter = CurrencyConverter().apply {
+            setupRates(rates)
+            currencyConverter.initRateConversion()
+        }
+
     }
 
     @Test
